@@ -1,6 +1,6 @@
 {
   "name": "capacitor-plugin-useragent",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allows you to change your User-Agent for HTTP requests.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
