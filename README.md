@@ -1,20 +1,61 @@
-# Cordova/PhoneGap UserAgent Plugin #
-Plugin for Cordova 3.0+ that allows you to change your User-Agent for HTTP requests.
+# capacitor-plugin-useragent
 
-## Adding the plugin to your project ##
-To install the plugin, use the Cordova CLI and enter the following:<br />
-`cordova plugin add https://github.com/LouisT/cordova-useragent`
+Allows you to change your User-Agent for HTTP requests.
 
-## Platforms ##
-- Android
-- iOS (9+, with [WKWebView plugin](https://github.com/apache/cordova-plugin-wkwebview-engine))
+## Install
 
-## Use ##
-To set your User-Agent:<br />
-`UserAgent.set(useragent)`
+```bash
+npm install capacitor-plugin-useragent
+npx cap sync
+```
 
-To get your current User-Agent:<br />
-`UserAgent.get(function(ua) { })`
+## API
 
-To set your User-Agent back to the default:<br />
-`UserAgent.reset()`
+<docgen-index>
+
+* [`set(...)`](#set)
+* [`get()`](#get)
+* [`reset()`](#reset)
+
+</docgen-index>
+
+<docgen-api>
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### set(...)
+
+```typescript
+set(options: { value: string; }) => Promise<{ value: string; }>
+```
+
+| Param         | Type                            |
+| ------------- | ------------------------------- |
+| **`options`** | <code>{ value: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### get()
+
+```typescript
+get() => Promise<{ value: string; }>
+```
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### reset()
+
+```typescript
+reset() => Promise<{ value: string; }>
+```
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+</docgen-api>
