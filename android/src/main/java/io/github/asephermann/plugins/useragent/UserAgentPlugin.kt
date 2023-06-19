@@ -1,8 +1,6 @@
 package io.github.asephermann.plugins.useragent
 
-import android.util.Log
 import android.webkit.WebSettings
-import android.webkit.WebView
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
@@ -12,29 +10,23 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "UserAgent")
 class UserAgentPlugin : Plugin() {
-    var settings: WebSettings? = null
-
+    private var settings: WebSettings? = null
     override fun load() {
-        super.load()
-        settings = WebView(context).settings
+        settings = bridge.webView.settings
     }
 
     @PluginMethod
     fun get(call: PluginCall) {
         val ret = JSObject()
-        ret.put("value", settings?.userAgentString)
+        val userAgent = settings?.userAgentString
+        ret.put("value", userAgent)
         call.resolve(ret)
     }
 
     @PluginMethod
     fun set(call: PluginCall) {
-        val value = call.getString("value")
-        val userAgent = String.format(
-            "%s %s",
-            settings?.userAgentString,
-            value
-        )
-        settings?.userAgentString = userAgent
+        val value = call.getString("value", null)
+        settings?.userAgentString = value
         val ret = JSObject()
         ret.put("value", settings?.userAgentString)
         call.resolve(ret)
@@ -42,7 +34,7 @@ class UserAgentPlugin : Plugin() {
 
     @PluginMethod
     fun reset(call: PluginCall) {
-        settings?.userAgentString = null
+        settings!!.userAgentString = null
         val ret = JSObject()
         ret.put("value", settings?.userAgentString)
         call.resolve(ret)
